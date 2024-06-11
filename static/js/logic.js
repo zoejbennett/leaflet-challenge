@@ -26,10 +26,14 @@ function createFeatures(earthquakeData) {
                 fillColor : fillColor,
                 fillOpacity : .8
             };
-            return L.circle(latlng, geojsonMarkerOptions)
+            return L.circle(latlng, geojsonMarkerOptions).bindPopup(
+                `<h3>Location: ${feature.properties.place}</h3><hr><p>Magnitude: ${mag}</p><p>Depth: ${depth} km</p>`
+            );
+          
         }
     })
-    createMap(earthquakes);
+    createMap(earthquakes)
+    ;
 }
 
 function getColor(depth) {
